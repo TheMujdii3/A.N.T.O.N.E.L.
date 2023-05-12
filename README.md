@@ -1,5 +1,6 @@
 # Gunoi-smart
-A.N.T.O.N.E.L
+A.N.T.O.N.E.L.
+
 Pentru participarea in concursul InfoEducatie la categoria Roboti am ales ca facem un cos de gunoi inteligent care se deschide 
 la doar o trecere de mana prin fata senzorului.Ne-am gandit ca acest tip de cos de gunoi poate fi utilizat de catre persoanele cu handicap fizic
 cu forta scazuta in membre sau chiar cu anumit emembre amputate.
