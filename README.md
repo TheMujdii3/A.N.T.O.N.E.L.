@@ -17,11 +17,17 @@ de cabluri folosite.
 Placa de dezvoltare folosita este Arduino Uno pe care am folosit 2 pini analogici pentru display(SDA/SCL) si am mai folosit 5 pini digitali unul pretru
 servomotor si 4 pentru senzorii ultrasonici.
 Pe partea de programare am incercat sa pastram codul cat mai simplu posibil:
+
 -am folosit libraria "LiquidCrystal_I2C.h" pentru a putea utiliza interfata I2C a placii impreuna cu displayul
+
 -am folosit libraria "Servo.h" pentru a utilizarea servoului
+
 -am folosit functia digitalWrite pentru utilizarea senzorilor ultrasonici
+
 -am creat obiectul "lcd" al librariei LiquidCrystal_I2C.h
+
 -am creat obiectul "servoclapa" al librariei Servo.h
+
 Pe parcursul testelor am observat ca dupa ridicarea capacului gunoiului variabila "procentaj" o lua razna si de fiecare data trebuia resetata
 placa Arduino asa ca am decis sa mai folosim un pin digital(2) pentru activarea pinului "Reset" de pe placa arduino automat de fiecare data cand
 variabila "procentaj" are alte valori inafara celor din multimea (0;100).
