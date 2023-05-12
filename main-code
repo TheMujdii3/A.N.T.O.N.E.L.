@@ -1,0 +1,82 @@
+#include <LiquidCrystal_I2C.h>
+#include <Servo.h>
+
+
+LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,16,2); 
+
+char rezultat;
+const int pingPin = 10;
+const int plinPin = 12;
+const int echoPin = 7;
+const int echo2Pin = 6;
+const int reset = 2;
+long duration ,duration2;
+int cm ,cm2;
+
+Servo servoclapa;           
+long val;
+long procentaj;
+void setup() {
+  Serial.begin(9600);
+  
+  servoclapa.attach(9);
+  servoclapa.write(90);
+  
+  lcd.init();
+  lcd.backlight(); 
+  
+  pinMode(pingPin, OUTPUT);
+  pinMode(plinPin, OUTPUT); 
+  pinMode(echoPin, INPUT); 
+  pinMode(echo2Pin, INPUT);
+  
+  digitalWrite(reset, HIGH);
+  delay(200);
+  pinMode(reset, OUTPUT);
+
+}
+
+  void loop() {
+  while(procentaj<100 || procentaj>0){
+
+  
+  digitalWrite(pingPin, LOW);
+  digitalWrite(plinPin, LOW);
+  delayMicroseconds(2);
+  
+  digitalWrite(plinPin, HIGH);
+  digitalWrite(pingPin, HIGH);
+  delayMicroseconds(10);
+  
+  digitalWrite(plinPin, LOW);
+  digitalWrite(pingPin, LOW);
+
+  duration2 = pulseIn(echo2Pin, HIGH);
+  duration = pulseIn(echoPin, HIGH);
+  
+  cm = duration*0.034/2;
+  cm2 = duration2*0.043/2;
+
+  lcd.setCursor(0, 0);
+  lcd.print("Gunoiu e");
+  lcd.setCursor(9, 0);
+  
+  procentaj=100-(cm2*30.2/10);
+  Serial.print("cm=");
+  Serial.println(cm);
+  Serial.print("procentaj=");
+  Serial.println(procentaj);
+  lcd.print(procentaj);
+ 
+  
+  if(cm<10){
+    servoclapa.write(0);
+    delay(200);
+    servoclapa.write(90);
+  }
+
+  delay(100);
+  if(cm2>33)digitalWrite(reset, LOW);
+  }
+
+}
