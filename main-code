@@ -12,7 +12,7 @@ const int echo2Pin = 6;
 const int reset = 2;
 long duration ,duration2;
 int cm ,cm2;
-
+int unghi;
 Servo servoclapa;           
 long val;
 long procentaj;
@@ -21,8 +21,7 @@ void setup() {
   Serial.begin(9600);
   
   servoclapa.attach(9);
-  servoclapa.write(90);
-  
+  servoclapa.write(175);
   lcd.init();
   lcd.backlight(); 
   
@@ -38,7 +37,8 @@ void setup() {
 }
 
   void loop() {
-  while(procentaj<100 || procentaj>0){
+    
+  //while(procentaj<100 || procentaj>0){
 
   
   digitalWrite(plinPin, LOW);
@@ -77,14 +77,22 @@ void setup() {
   lcd.print(procentaj);
  
   
-  if(cm<10){
-    servoclapa.write(0);
-    
+  if(cm<20)
+  {
+    unghi=100;
+   // delay(8000);
   }
-  else servoclapa.write(180);
+  else 
+  {
+    unghi=175;
+    //delay(8000);
+  }
+  servoclapa.write(unghi);
 
+  Serial.print("unghi=");
+  Serial.println(unghi);
   delay(100);
   if(cm2>33 || cm<20)digitalWrite(reset, LOW);
-  }
+  //}
 
 }
