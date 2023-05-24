@@ -35,6 +35,4 @@ placa Arduino asa ca am decis sa mai folosim un pin digital(2) pentru activarea 
 variabila "procentaj" are alte valori inafara celor din multimea (0;100).
 
 
-
-                                                        Proiect realizat de Neculai-Mirea Andrei-Laurentiu
-                                                                                si Calcan Cosmin
+Proiect realizat de Neculai-Mirea Andrei-Laurentiu si Calcan COsmin
