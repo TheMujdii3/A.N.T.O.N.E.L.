@@ -36,5 +36,5 @@ variabila "procentaj" are alte valori inafara celor din multimea (0;100).
 
 
 
-                                                                             Proiect realizat de Neculai-Mirea Andrei-Laurentiu
-                                                                                                          si Calcan Cosmin
+                                                        Proiect realizat de Neculai-Mirea Andrei-Laurentiu
+                                                                                si Calcan Cosmin
