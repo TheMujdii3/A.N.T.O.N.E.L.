@@ -33,3 +33,8 @@ Pe partea de programare am incercat sa pastram codul cat mai simplu posibil:
 Pe parcursul testelor am observat ca dupa ridicarea capacului gunoiului variabila "procentaj" o lua razna si de fiecare data trebuia resetata
 placa Arduino asa ca am decis sa mai folosim un pin digital(2) pentru activarea pinului "Reset" de pe placa arduino automat de fiecare data cand
 variabila "procentaj" are alte valori inafara celor din multimea (0;100).
+
+
+
+                                                                             Proiect realizat de Neculai-Mirea Andrei-Laurentiu
+                                                                                                          si Calcan Cosmin
