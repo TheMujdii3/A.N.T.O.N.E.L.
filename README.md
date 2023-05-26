@@ -16,7 +16,8 @@ Pentru a afisa cat de plin este cosul de gunoi am folosit un ecran 16x2(16 coloa
 de cabluri folosite.
 
 
-Placa de dezvoltare folosita este Arduino Uno pe care am folosit 2 pini analogici pentru display(SDA/SCL) si am mai folosit 5 pini digitali unul pretru
+Placa de dezvoltare folosita este Arduino Uno pentru ca nu avem un circuit foarte complex si nici un volum mare de date de procesat.
+Am folosit 2 pini analogici pentru display(SDA/SCL) si am mai folosit 5 pini digitali unul pentru
 servomotor si 4 pentru senzorii ultrasonici.
 Pe partea de programare am incercat sa pastram codul cat mai simplu posibil:
 
