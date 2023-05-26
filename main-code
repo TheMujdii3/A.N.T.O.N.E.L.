@@ -90,8 +90,6 @@ void setup() {
   lcd.setCursor(9, 0);
   x=cm2*25/10;  
   procentaj=100-(cm2*23.5/10);
-  Serial.print("cm=");
-  Serial.println(cm);
   lcd.setCursor(10, 0);
   lcd.print(procentaj);
   lcd.print("%");
@@ -112,6 +110,8 @@ void setup() {
   }
   
   //afisare variabile in serial monitor pentru debug eficient si rapid
+  Serial.print("cm=");
+  Serial.println(cm);
   Serial.print("unghi=");
   Serial.println(unghi);
   Serial.print("cm2=");
