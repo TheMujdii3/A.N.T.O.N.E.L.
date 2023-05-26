@@ -35,6 +35,13 @@ Pe partea de programare am incercat sa pastram codul cat mai simplu posibil:
 Pe parcursul testelor am observat ca dupa ridicarea capacului gunoiului variabila "procentaj" o lua razna si de fiecare data trebuia resetata
 placa Arduino asa ca am decis sa mai folosim un pin digital(2) pentru activarea pinului "Reset" de pe placa arduino automat de fiecare data cand
 variabila "procentaj" are alte valori inafara celor din multimea (0;100).
+De asemenea ,in teste am observat ca servo motorul care ar trebui sa ridice clapa gunoiului nu are destula forta sa faca acest lucru asa ca ,
+am ales sa mai adaugam un motor stepper care sa il ajute pe primul.Acestu lucru nu a dat rezultate pentru ca hardware-ul utilizat necesita o intensitate mare 
+a curentului care nu poate fi asigurata dintr-un port USB de laptop(este necesara o sursa de 5V suplimentara pe care nu o avem).
+
+
+Din punct de vedere mecanic Antonel este foarte simplu conceput ,singura parte care se misca fiind bratul servoului care implicit ridica capacul la un unghi
+de minim 45 de grade fata de orizontala.
 
 
 Proiect realizat de Neculai-Mirea Andrei-Laurentiu si Calcan Cosmin
