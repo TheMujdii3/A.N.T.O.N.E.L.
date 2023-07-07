@@ -1,6 +1,7 @@
 #include <Stepper.h>
 #include <LiquidCrystal_I2C.h>
 #include <Servo.h>
+#include <dht11.h>
 
 //crearea obiectelor 
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,16,2); 
@@ -22,11 +23,17 @@ const int echo2Pin = 6;
 //gata
 //pin reset
 const int reset = 2;
-
+//gata
+//pinii pt senzorii de la statia meteo
+const int Temp_HumidPin = 9;
+const int metan = A0;
+const int mq135 = A1;
+int send_data[4];
 //variabilele utilizate
 long duration ,duration2;
 int cm ,cm2,x;
 int unghi;
+int valdht,ppm_metan,ppm_135;
 long val;
 long procentaj;
 
@@ -46,6 +53,8 @@ void setup() {
   pinMode(plinPin, OUTPUT); 
   pinMode(echoPin, INPUT); 
   pinMode(echo2Pin, INPUT);
+  pinMode(metan , INPUT);
+  pinMode(mq135 , INPUT);
 
   //initializare pin reset
   digitalWrite(reset, HIGH);
@@ -57,7 +66,21 @@ void setup() {
 }
 
   void loop() {
+  valdht = DHT11.read(Temp_HumidPin);
   
+  ppm_metan=analogRead(metan);
+  ppm_135=analogRead(mq135);
+
+  send_data[1]=DHT11.humidity;
+  send_data[0]=DHT11.temperature;
+  send_data[2]=ppm_metan;
+  send_data[3]=ppm_135;
+  Serial.print("mq135:");
+  Serial.println(send_data[3]);
+
+
+
+
   //citire date de la senzorul din interiorul cosului de gunoi
   digitalWrite(plinPin, LOW);
   delayMicroseconds(2);
