@@ -28,7 +28,7 @@ void setup() {
   Serial.begin(9600);
   // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
   delay(1500);
-  Serial.swap();
+  //Serial.swap();
 
   // Defined in thingProperties.h
   initProperties();
@@ -51,7 +51,7 @@ void loop() {
   ArduinoCloud.update();
   // Your code here
    if (Serial.available() > 0) {
-                for(i=0;i<4;i++)v[i] = Serial.read();
+                for(i=0;i<=4;i++)v[i] = Serial.read();
     }
     /*
     v[0]=temp
@@ -61,33 +61,16 @@ void loop() {
     */
     if(v[2]<400 && v[3]<150)ok=true;
     else ok=false;
+    temp=v[0];
+    umiditate=v[1];
+    ppm_metan=v[2];
+    ppm_aer=v[3];
+    procent_gunoi=v[4];
+    Serial.write(v[4]);
     
     
 
 }
-
-
-/*
-  Since Temp is READ_WRITE variable, onTempChange() is
-  executed every time a new value is received from IoT Cloud.
-*/
-void onTempChange()  {
-  // Add your code here to act upon Temp change
-}
-
-/*
-  Since Umiditate is READ_WRITE variable, onUmiditateChange() is
-  executed every time a new value is received from IoT Cloud.
-*/
-void onUmiditateChange()  {
-  // Add your code here to act upon Umiditate change
-}
-
-/*
-  Since Presiune is READ_WRITE variable, onPresiuneChange() is
-  executed every time a new value is received from IoT Cloud.
-*/
-
 
 /*
   Since PpmAer is READ_WRITE variable, onPpmAerChange() is
@@ -96,7 +79,6 @@ void onUmiditateChange()  {
 void onPpmAerChange()  {
   // Add your code here to act upon PpmAer change
 }
-
 /*
   Since PpmMetan is READ_WRITE variable, onPpmMetanChange() is
   executed every time a new value is received from IoT Cloud.
@@ -104,8 +86,27 @@ void onPpmAerChange()  {
 void onPpmMetanChange()  {
   // Add your code here to act upon PpmMetan change
 }
-
-
+/*
+  Since ProcentGunoi is READ_WRITE variable, onProcentGunoiChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onProcentGunoiChange()  {
+  // Add your code here to act upon ProcentGunoi change
+}
+/*
+  Since Temp is READ_WRITE variable, onTempChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onTempChange()  {
+  // Add your code here to act upon Temp change
+}
+/*
+  Since Umiditate is READ_WRITE variable, onUmiditateChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onUmiditateChange()  {
+  // Add your code here to act upon Umiditate change
+}
 /*
   Since Ok is READ_WRITE variable, onOkChange() is
   executed every time a new value is received from IoT Cloud.

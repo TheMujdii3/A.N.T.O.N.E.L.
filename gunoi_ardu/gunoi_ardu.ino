@@ -1,19 +1,15 @@
-#include <Stepper.h>
-#include <LiquidCrystal_I2C.h>
+#include <DHT11.h>
+
 #include <Servo.h>
-#include <dht11.h>
+#include <LiquidCrystal_I2C.h>
+
 
 //crearea obiectelor 
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,16,2); 
-Stepper help = Stepper(32,5,7,10,11);
 Servo servoclapa;
 
 
-//pinii pt stepper 
-const int in1 = 5;
-const int in2 = 7;
-const int in3 = 10;
-const int in4 = 11;
+
 // gata
 //pinii pt ultrasonici
 const int pingPin =3;
@@ -25,7 +21,7 @@ const int echo2Pin = 6;
 const int reset = 2;
 //gata
 //pinii pt senzorii de la statia meteo
-const int Temp_HumidPin = 9;
+DHT11 dht11(10);
 const int metan = A0;
 const int mq135 = A1;
 int send_data[4];
@@ -33,16 +29,21 @@ int send_data[4];
 long duration ,duration2;
 int cm ,cm2,x;
 int unghi;
-int valdht,ppm_metan,ppm_135;
+int i=1;
+int umiditate,ppm_metan,ppm_135;
 long val;
 long procentaj;
+
+
+
+
 
 void setup() {
   Serial.begin(9600);
 
   //initializarea servoului
   servoclapa.attach(9);
-  servoclapa.write(175);
+  //servoclapa.write(100);
 
   //initializarea displayului
   lcd.init();
@@ -60,26 +61,26 @@ void setup() {
   digitalWrite(reset, HIGH);
   delay(200);
   pinMode(reset, OUTPUT);
-
+  Serial.println("START");
   //setare viteza stepper
-  help.setSpeed(15);
 }
 
   void loop() {
-  valdht = DHT11.read(Temp_HumidPin);
+  
   
   ppm_metan=analogRead(metan);
   ppm_135=analogRead(mq135);
-
-  send_data[1]=DHT11.humidity;
-  send_data[0]=DHT11.temperature;
+  if(i%2==0){
+    send_data[0]=dht11.readTemperature();
+    i=i+1;
+  }
+  else{
+    send_data[1]=dht11.readHumidity();
+    i=i+1;
+  }
   send_data[2]=ppm_metan;
   send_data[3]=ppm_135;
-  Serial.print("mq135:");
-  Serial.println(send_data[3]);
-
-
-
+  
 
   //citire date de la senzorul din interiorul cosului de gunoi
   digitalWrite(plinPin, LOW);
@@ -113,26 +114,26 @@ void setup() {
   lcd.setCursor(9, 0);
   x=cm2*25/10;  
   procentaj=100-(cm2*23.5/10);
+  send_data[4]=procentaj;
   lcd.setCursor(10, 0);
   lcd.print(procentaj);
   lcd.print("%");
   lcd.setCursor(0, 1);
   lcd.print("plin");
- 
   //deschiderea capacului
   if(cm<20)
   {
-    servoclapa.write(100);
-    help.step(20);
+    servoclapa.write(90);
   }
   else 
   {
-    servoclapa.write(175);
-    help.step(-20);
+    servoclapa.write(180);
+    
     delay(5000);
   }
   
   //afisare variabile in serial monitor pentru debug eficient si rapid
+  /*
   Serial.print("cm=");
   Serial.println(cm);
   Serial.print("unghi=");
@@ -143,9 +144,27 @@ void setup() {
   Serial.println(procentaj);
   Serial.print("x=");
   Serial.println(x);
-  delay(100);
+  Serial.print("dht:");
+  Serial.print(send_data[0]);
+  Serial.print(" ");
+  Serial.print("+");
+  Serial.print(" ");
+  Serial.println(send_data[1]);
+  Serial.print("mq135:");
+  Serial.println(send_data[3]);
+  Serial.print("mq4:");
+  Serial.println(send_data[2]);
+  Serial.print("i=");
+  Serial.println(i);
+  */
+  if(i == 100)i=1;
+  
+  for(int j=0;j<=4;j++){
+    Serial.write(send_data[j]);
+  }
+  
   
   //resetarea placii cand "procentaj" iese din multimea (1,99)
-  if(procentaj<1 || procentaj>99)digitalWrite(reset, LOW);
+  //if(procentaj<1 || procentaj>99)digitalWrite(reset, LOW);
 
 }
