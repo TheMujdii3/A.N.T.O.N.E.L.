@@ -114,7 +114,6 @@ void setup() {
   lcd.setCursor(9, 0);
   x=cm2*25/10;  
   procentaj=100-(cm2*23.5/10);
-  send_data[4]=procentaj;
   lcd.setCursor(10, 0);
   lcd.print(procentaj);
   lcd.print("%");
@@ -157,14 +156,20 @@ void setup() {
   Serial.print("i=");
   Serial.println(i);
   */
-  if(i == 100)i=1;
+  if(send_data[2]>500)servoclapa.write(90);
   
+  if(i == 100)i=1;
+  send_data[4]=procentaj;
   for(int j=0;j<=4;j++){
     Serial.write(send_data[j]);
   }
   
   
   //resetarea placii cand "procentaj" iese din multimea (1,99)
-  //if(procentaj<1 || procentaj>99)digitalWrite(reset, LOW);
-
+  if(procentaj<1 || procentaj>100)digitalWrite(reset, LOW);
+  if(procentaj=100){
+    servoclapa.write(90);
+    delay(500);
+    servoclapa.write(180)l
+  }
 }
