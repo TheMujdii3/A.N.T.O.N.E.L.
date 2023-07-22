@@ -61,12 +61,13 @@ void setup() {
   digitalWrite(reset, HIGH);
   delay(200);
   pinMode(reset, OUTPUT);
+
+
   Serial.println("START");
   //setare viteza stepper
 }
 
   void loop() {
-  
   
   ppm_metan=analogRead(metan);
   ppm_135=analogRead(mq135);
@@ -112,23 +113,35 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.print("Gunoiul e");
   lcd.setCursor(9, 0);
-  x=cm2*25/10;  
-  procentaj=100-(cm2*23.5/10);
+  if(cm2<=39)procentaj=100-(cm2*25.5/10);
   lcd.setCursor(10, 0);
   lcd.print(procentaj);
   lcd.print("%");
   lcd.setCursor(0, 1);
   lcd.print("plin");
+  delay(2000);
+  lcd.clear();
+  
+  lcd.setCursor(0,0);
+  lcd.print("Temp e ");
+  lcd.setCursor(8,0);
+  lcd.print(send_data[0]);
+  lcd.setCursor(0,1);
+  lcd.print("Humid e");
+  lcd.setCursor(8,1);
+  lcd.print(send_data[1]);
+  delay(2000);
+  lcd.clear();
+  
   //deschiderea capacului
   if(cm<20)
   {
-    servoclapa.write(90);
+    servoclapa.write(93);
   }
   else 
   {
-    servoclapa.write(180);
-    
-    delay(5000);
+    servoclapa.write(181);
+    delay(1000);
   }
   
   //afisare variabile in serial monitor pentru debug eficient si rapid
@@ -156,20 +169,28 @@ void setup() {
   Serial.print("i=");
   Serial.println(i);
   */
-  if(send_data[2]>500)servoclapa.write(90);
+
+  //daca se detecteaza metan clapa sta deschisa
+  if(send_data[2]>800)servoclapa.write(90);
   
+  //variabila i o ia de la inceput
   if(i == 100)i=1;
+
+  //se pune in vector si procentul pentru a fi transmis in cloud
   send_data[4]=procentaj;
+
+  //se trimite vectorul in nodemcu
   for(int j=0;j<=4;j++){
     Serial.write(send_data[j]);
   }
   
   
+  
   //resetarea placii cand "procentaj" iese din multimea (1,99)
-  if(procentaj<1 || procentaj>100)digitalWrite(reset, LOW);
-  if(procentaj=100){
-    servoclapa.write(90);
+  //if(procentaj<1 || procentaj>100)digitalWrite(reset, LOW);
+  /*if(procentaj>95){
+    servoclapa.write(180);
     delay(500);
-    servoclapa.write(180)l
-  }
+    servoclapa.write(90);
+  }*/
 }
