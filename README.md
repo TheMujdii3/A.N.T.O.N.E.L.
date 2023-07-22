@@ -41,7 +41,6 @@ a curentului care nu poate fi asigurata dintr-un port USB de laptop(este necesar
 
 Din punct de vedere mecanic Antonel este foarte simplu conceput ,singura parte care se misca fiind bratul servoului care implicit ridica capacul la un unghi
 de minim 45 de grade fata de orizontala.
-![Grand Allis (1)](https://github.com/TheMujdii3/A.N.T.O.N.E.L./assets/72468962/d0d671e5-c7da-470d-9279-cabc54fba5bf)
 
 
 
