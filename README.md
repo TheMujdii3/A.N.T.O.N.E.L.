@@ -39,7 +39,9 @@ am ales sa mai adaugam un motor stepper care sa il ajute pe primul.Acestu lucru 
 a curentului care nu poate fi asigurata dintr-un port USB de laptop(este necesara o sursa de 5V suplimentara pe care nu o avem).
 
 De asemenea am ales sa adaugam si 3 senzori(2 senzori de gaze si unul de temperatura/umiditate).Am folosit un senzor de metan care ar trebui sa detecteze o cantitate foarte mica de metan produs de deseuri perisabile aruncare in cos.Al doilea senzor de gaz detecteaza gaze cu efect de sera si indica calitatea aerului.Aceste date poti fi accesate prin intermediul unei placi de dezvoltare NodeMcu pe create.arduino.cc/dashboards utilizand contul:
+
 Email:cosmin.buisiness@gmail.com
+
 Parola:ANTONELcastigatorul 
 
 
