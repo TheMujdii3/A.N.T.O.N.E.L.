@@ -1,4 +1,4 @@
-# A.N.T.O.N.E.L.
+# A  NTONEL
 
 Pentru participarea in concursul InfoEducatie la categoria Roboti am ales ca facem un cos de gunoi inteligent care se deschide 
 la doar o trecere de mana prin fata senzorului.Ne-am gandit ca acest tip de cos de gunoi poate fi utilizat de catre persoanele cu handicap fizic
@@ -37,6 +37,12 @@ variabila "procentaj" are alte valori inafara celor din multimea (0;100).
 De asemenea ,in teste am observat ca servo motorul care ar trebui sa ridice clapa gunoiului nu are destula forta sa faca acest lucru asa ca ,
 am ales sa mai adaugam un motor stepper care sa il ajute pe primul.Acestu lucru nu a dat rezultate pentru ca hardware-ul utilizat necesita o intensitate mare 
 a curentului care nu poate fi asigurata dintr-un port USB de laptop(este necesara o sursa de 5V suplimentara pe care nu o avem).
+
+De asemenea am ales sa adaugam si 3 senzori(2 senzori de gaze si unul de temperatura/umiditate).Am folosit un senzor de metan care ar trebui sa detecteze o cantitate foarte mica de metan produs de deseuri perisabile aruncare in cos.Al doilea senzor de gaz detecteaza gaze cu efect de sera si indica calitatea aerului.Aceste date poti fi accesate prin intermediul unei placi de dezvoltare NodeMcu pe create.arduino.cc/dashboards utilizand contul:
+
+Email:cosmin.buisiness@gmail.com
+
+Parola:ANTONELcastigatorul 
 
 
 Din punct de vedere mecanic Antonel este foarte simplu conceput ,singura parte care se misca fiind bratul servoului care implicit ridica capacul la un unghi
