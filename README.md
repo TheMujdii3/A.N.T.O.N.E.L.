@@ -37,6 +37,7 @@ variabila "procentaj" are alte valori inafara celor din multimea (0;100).
 De asemenea ,in teste am observat ca servo motorul care ar trebui sa ridice clapa gunoiului nu are destula forta sa faca acest lucru asa ca ,
 am ales sa mai adaugam un motor stepper care sa il ajute pe primul.Acestu lucru nu a dat rezultate pentru ca hardware-ul utilizat necesita o intensitate mare 
 a curentului care nu poate fi asigurata dintr-un port USB de laptop(este necesara o sursa de 5V suplimentara pe care nu o avem).
+De aceea am ales sa utilizam un panou solar conectat la o baterie externa care alimenteaza tot.
 
 De asemenea am ales sa adaugam si 3 senzori(2 senzori de gaze si unul de temperatura/umiditate).Am folosit un senzor de metan care ar trebui sa detecteze o cantitate foarte mica de metan produs de deseuri perisabile aruncare in cos.Al doilea senzor de gaz detecteaza gaze cu efect de sera si indica calitatea aerului.Aceste date poti fi accesate prin intermediul unei placi de dezvoltare NodeMcu pe create.arduino.cc/dashboards utilizand contul:
 
