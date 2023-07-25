@@ -66,7 +66,6 @@ void loop() {
     ppm_metan=v[2];
     ppm_aer=v[3];
     procent_gunoi=v[4];
-    Serial.write(v[4]);
     
     
 
